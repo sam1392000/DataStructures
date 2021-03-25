@@ -1,0 +1,64 @@
+package com.sam.queue;
+public class Queue {
+	int array[];
+	int rear;
+	int front;
+	int size;
+	
+	Queue(int size)
+	{
+		this.size = size;
+		array = new int[size];
+		front = 0;
+		rear = 0;
+	}
+	
+	public void add(int number)
+	{
+		if(!isFull())
+		{
+			array[rear++] = number;
+			front++;
+		    System.out.println("The element is added");
+		}else
+		{
+			System.out.println("Queue is overflow");
+		}
+	}
+	
+	public void remove()
+	{
+		if(!isEmpty())
+		{
+			System.out.println("The Element "+array[front]+" is Deleted successfully");
+			front--;
+		}
+	}
+	
+	public boolean isFull()
+	{
+		if(rear == size)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isEmpty()
+	{
+		if(front == 0)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	public void display()
+	{
+		while(front >= 0 && front != rear)
+		{
+			System.out.print(array[front--]);
+		}
+	}
+	
+}

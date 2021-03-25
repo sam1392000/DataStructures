@@ -1,0 +1,120 @@
+package com.sam.queue;
+public class Queue {
+	int array[];
+	int rear;
+	int front;
+	int size;
+	
+	Queue(int size)
+	{
+		this.size = size;
+		array = new int[size];
+		front = -1;
+		rear = -1;
+	}
+	
+	public void add(int number) // linear Queue
+	{
+		if(isFull())
+		{
+			System.out.println("Queue is full");
+		}
+		else if(isEmpty())
+		{
+			front = 0;
+			rear = 0;
+			array[rear] = number;
+		}
+		else
+		{
+			rear++;
+			array[rear] = number;
+		}
+	}
+	
+	public void remove() // linear queue
+	{
+		if(!isEmpty())
+		{
+			System.out.println("The Element "+array[front]+" is Deleted successfully");
+			front++;
+		}
+	}
+	
+	public boolean isFull() // linear Queue
+	{
+		if(rear == size)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isEmpty() // linear Queue
+	{
+		if(rear == -1 && front == -1)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	public void display()// linear Queue
+	{
+		//int trav = (front >= size) ? front-1:front;
+		int i = front;
+		while(i <= rear )
+		{
+			System.out.print(array[i]+" ");
+			i++;
+		}
+	}
+	
+	
+	
+	/*
+	 * Circular Queue insertion and deletion
+	 * */
+	
+	public void cc_insertion(int data)
+	{
+		if(isccFull())
+		{
+			System.out.println("The QUEUE is Full");
+		}
+		else {
+			array[rear] = data;
+			rear = (rear+1) % size;
+		}
+	}
+	
+	public void cc_deletion()
+	{
+		if(isccEmpty())
+		{
+			System.out.println("The QUEUE is Empty");
+		}
+		else
+		{
+			int x = array[front];
+			front = (front+1) % size;
+			System.out.println(x+ "has been deleted");
+		}
+	}
+	
+	public boolean isccFull()
+	{
+		if( (rear == size-1 && front == 0 )|| (rear+1)%size == front)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean isccEmpty()
+	{
+		if(front == 0 && rear == 0)
+			return true;
+		return false;
+	}
+}
