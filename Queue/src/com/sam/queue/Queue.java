@@ -90,10 +90,12 @@ public class Queue {
 			front = 0; 
 			rear = 0;
 			array[rear] = data;
+			System.out.println(data+" is added in the position "+rear);
 		}
 		else {
 			rear = (rear+1) % size;
 			array[rear] = data;
+			System.out.println(data+" is added in the position "+rear);
 		}
 	}
 	
@@ -138,10 +140,15 @@ public class Queue {
 	
 	public void disp()
 	{
-		for(int i = 0 ; i <= rear ; i++)
+//		System.out.println("front "+front+" "+array[front]);
+//		System.out.println("rear "+rear+" "+array[rear]);
+//		System.out.println(size);
+		int i;
+		for(i = front ; i != rear ; i = (i+1) % size)
 		{
 			System.out.print(array[i]+" ");
 		}
+		System.out.println(array[i]);
 		System.out.println();
 	}
 }
