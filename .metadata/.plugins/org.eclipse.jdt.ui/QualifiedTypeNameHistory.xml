@@ -7,4 +7,9 @@
     <fullyQualifiedTypeName name="com.sam.queue.Queue"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.SecurityException"/>
+    <fullyQualifiedTypeName name="java.util.Queue"/>
+    <fullyQualifiedTypeName name="com.sam.tree.Tree_Structure"/>
+    <fullyQualifiedTypeName name="com.sam.tree.Views"/>
+    <fullyQualifiedTypeName name="com.sam.tree.Traversals"/>
+    <fullyQualifiedTypeName name="com.sam.tree.Tree_functions"/>
 </qualifiedTypeNameHistroy>

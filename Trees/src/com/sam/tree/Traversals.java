@@ -2,6 +2,17 @@ package com.sam.tree;
 
 import java.util.*;
 
+/*class level  This only for vertical order traversal
+{  
+	int stage;
+	Tree node;
+	level(int stage , Tree node)
+	{
+		this.stage = stage;
+		this.node = node;
+	}
+}*/
+
 class Tree_functions
 {
 	// Level Wise insertion
@@ -122,9 +133,47 @@ class Tree_functions
 			System.out.print(stack2.pop().data+" ");
 		}
 	}
+
+	public void Vertical_traversal(Tree head)
+	{
+			TreeMap<Integer,ArrayList<Integer>>tmap = new TreeMap<>();
+			Queue<level>queue = new LinkedList<>();
+			queue.add(new level(0 , head));
+			while(!queue.isEmpty())
+			{
+				int size = queue.size();
+				while(size-- > 0)
+				{
+					level temp = queue.peek();
+					queue.remove();
+					Tree just = temp.node;
+					int level = temp.stage;
+					
+					if(tmap.containsKey(level) == false)
+					{
+						ArrayList<Integer>a= new ArrayList<>();
+						a.add(just.data);
+						tmap.put(level, a);
+					}else
+					{
+						tmap.get(level).add(just.data);
+					}
+					
+					if(just.left != null)
+					{
+						queue.add(new level(level-1 , just.left));
+					}
+					if(just.right != null)
+					{
+						queue.add(new level(level+1 , just.right));
+					}
+				}
+			}
+			System.out.println(tmap);
+		}
 }
 
-public class Inorder_Traversal {
+public class Traversals {
 
 	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
@@ -149,6 +198,9 @@ public class Inorder_Traversal {
 		System.out.println();
 		System.out.println("Postorder Traversal using Iterative");
 		t1.postorder_iterative(root);
+		System.out.println();
+		System.out.println("Vertical Traversal using Iterative");
+		t1.Vertical_traversal(root);
 		
 		
 
